@@ -12,7 +12,7 @@ To adapt this demo to your own Jackal, you may need to clone the [jackal_cartogr
 
   2. Run the following script to create a workspace and install proto3. This script will also install the packages required to use Cartographer as well as the [jackal_desktop](https://github.com/jackal/jackal_desktop), [jackal](https://github.com/jackal/jackal), and [jackal_simulator](https://github.com/jackal/jackal_simulator) packages:
 
-     `source $(pwd)/jackal_cartographer_navigation/protobuf3_local.sh`
+     `source $(pwd)/jackal_cartographer_navigation/jackal_cartographer_install.sh`
 
   3. Open three new terminal/tabs, source the workspace for each terminal/tab:
 
@@ -24,7 +24,7 @@ To adapt this demo to your own Jackal, you may need to clone the [jackal_cartogr
 
       2. Launch RViz to visualize the robot:
 
-         `roslaunch jackal_viz view_robot.launch config:=gmapping`
+         `roslaunch jackal_viz view_robot.launch config:=cartographer`
 
       3. Launch the Cartographer node to begin SLAM:
 

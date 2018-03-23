@@ -2,14 +2,15 @@
 sudo apt-get update
 sudo apt-get install -y python-wstool python-rosdep ninja-build
 
-# Create a new workspace in 'cartographer_ws'.
-mkdir cartographer_ws
-cd cartographer_ws
+# Create a new workspace in 'jackal_cartographer_ws'.
+mkdir jackal_cartographer_ws
+cd jackal_cartographer_ws
 wstool init src
 cp -r ../jackal_cartographer_navigation ./src
 git -C ./src clone https://github.com/jackal/jackal_desktop
 git -C ./src clone https://github.com/jackal/jackal_simulator
 git -C ./src clone https://github.com/jackal/jackal
+cp src/jackal_cartographer_navigation/cartographer.rviz src/jackal_desktop/jackal_viz/rviz/
 
 # Merge the cartographer_ros.rosinstall file and fetch code for dependencies.
 wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_ros/master/cartographer_ros.rosinstall
@@ -20,8 +21,7 @@ cd ../cartographer_ros
 git checkout b274743eb794788d552745d26f30e90a2ca0b24c
 cd ../..
 
-# Build and install in 'cartographer_ws/protobuf/install' proto3.
-#set -o errexit
+# Build and install in 'jackal_cartographer_ws/protobuf/install' proto3.
 set -o verbose
 VERSION="v3.4.1"
 git clone https://github.com/google/protobuf.git
@@ -40,9 +40,6 @@ ninja install
 cd ../../
 
 # Install deb dependencies.
-# The command 'sudo rosdep init' will print an error if you have already
-# executed it since installing ROS. This error can be ignored.
-#sudo rosdep init
 rosdep update
 rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 
