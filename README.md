@@ -30,6 +30,8 @@ To adapt this demo to your own Jackal, you may need to clone the [jackal_cartogr
 
          `roslaunch jackal_cartographer_navigation cartographer_demo.launch`
 
+  ![Map created by Cartographer SLAM](jackal_cartographer.png)
+
   4. In the Rviz visualizer, make sure the visualizers in the Navigation group are enabled.
 
   5. Use the 2D Nav Goal tool in the top toolbar to select a movement goal in the visualizer. Make sure to select an unoccupied (dark grey) or unexplored (light grey) location.
